@@ -1,0 +1,121 @@
+:root {
+  --bg: #ffffff;
+  --fg: #111111;
+  --muted: #8a8a8e;
+  --accent: #e8a200;
+  --line-bg: #111111;
+  --line-fg: #ffb800;
+  --sep: rgba(0, 0, 0, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000;
+    --fg: #f5f5f7;
+    --muted: #8e8e93;
+    --accent: #ffb800;
+    --line-bg: #1c1c1e;
+    --line-fg: #ffb800;
+    --sep: rgba(255, 255, 255, 0.1);
+  }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { height: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -webkit-user-select: none;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  padding:
+    calc(env(safe-area-inset-top) + 20px)
+    calc(env(safe-area-inset-right) + 24px)
+    calc(env(safe-area-inset-bottom) + 16px)
+    calc(env(safe-area-inset-left) + 24px);
+}
+
+header {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.line {
+  background: var(--line-bg);
+  color: var(--line-fg);
+  border-radius: 8px;
+  padding: 2px 10px;
+  font-variant-numeric: tabular-nums;
+}
+
+.stop {
+  width: 100%;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+ol { list-style: none; }
+
+li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25em;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  line-height: 1.1;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--sep);
+  font-size: clamp(34px, 10vw, 48px);
+}
+
+li:last-child { border-bottom: 0; }
+
+li:first-child {
+  font-size: clamp(64px, 22vw, 104px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  padding-bottom: 16px;
+}
+
+li .pre, li .unit {
+  font-size: 0.45em;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+li:first-child .pre, li:first-child .unit { font-size: 0.32em; }
+
+li.now .num { color: var(--accent); }
+
+#empty {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+footer {
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+  min-height: 1.2em;
+}
+
+footer.warn { color: #ff453a; }
